@@ -8,6 +8,7 @@
     <ul>
         {% for task in tasks %}
             <a href="{% url 'delete_task' task.id %}">Delete</a>
+            <a href="{% url 'toggle_completed' task.id %}">Toggle Completed</a>
             <li>{{ task.title }} - {{ task.description }} - {% if task.completed %} Completed {% else %} Not Completed {% endif %}</li>
         {% endfor %}
     </ul>

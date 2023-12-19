@@ -21,3 +21,9 @@ def add_task(request):
 def delete_task(request, task_id):
     Task.objects.get(id=task_id).delete()
     return HttpResponseRedirect(reverse('task_list'))
+
+def toggle_completed(request, task_id):
+    task = Task.objects.get(id=task_id)
+    task.completed = not task.completed
+    task.save()
+    return HttpResponseRedirect(reverse('task_list'))
